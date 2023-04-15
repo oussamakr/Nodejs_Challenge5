@@ -2,11 +2,16 @@ const express = require("express");
 const image = require("./models/magemodel");
 const app = express();
 const path = require("path");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const morgan = require("morgan");
 require("./Connect_DB/connect");
 const fs = require("fs");
 const multer = require("multer");
 
-app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
+app.use(bodyParser.json());
 
 const storage = multer.diskStorage({
   // distinatio (creation destinition de notre file selon son extension )
